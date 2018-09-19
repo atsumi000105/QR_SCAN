@@ -1,2 +1,2 @@
 # qr-code
-Aplikasi Starter QR Code
+Aplikasi Starter Android QRCode
