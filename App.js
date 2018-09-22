@@ -24,6 +24,12 @@ const instructions = Platform.select({
 type Props = {};
 
 const Screen = createStackNavigator({
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: {
+      header:null
+    }
+  },
   Camera:{
     screen: CameraScreen
   },

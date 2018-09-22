@@ -4,7 +4,7 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 
 export default class CameraScreen extends Component {
     static navigationOptions ={
-        title:"Scan Barcode Tiket"
+        title:"Scan Barcode"
     }
   state = {
     isConnected: true
@@ -80,18 +80,17 @@ export default class CameraScreen extends Component {
       reactivate={true}
         onRead={this.onSuccess.bind(this)}
         ref={(node) => { this.scanner = node }}
-          topContent={
-            <Text style={styles.centerText}>
-            Arahkan Kamera ke Barcode 
-            </Text>
-          }
-
+          containerStyle={styles.container}
+        cameraStyle={styles.barcode}
         />
     )
   }
 }
 
 const styles = StyleSheet.create({
+    container: {
+      justifyContent:"center",alignItems:"center"
+    },
     centerText: {
       flex: 1,
       fontSize: 18,
@@ -119,5 +118,9 @@ const styles = StyleSheet.create({
       position: 'absolute',
       top: 30
   },
+  barcode:{
+    width: 150,
+    height: 150,
+  }
   });
   
