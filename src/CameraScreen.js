@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { View,Text,StyleSheet,Alert,TouchableOpacity,Linking,NetInfo } from "react-native";
+import { View,Text,StyleSheet,Alert,TouchableOpacity,YellowBox,Linking,NetInfo } from "react-native";
 import QRCodeScanner from 'react-native-qrcode-scanner';
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
 export default class CameraScreen extends Component {
     static navigationOptions ={
@@ -55,14 +56,29 @@ export default class CameraScreen extends Component {
         ref={(node) => { this.scanner = node }}
           containerStyle={styles.container}
         cameraStyle={styles.barcode}
+        showMarker={true}
+        markerStyle={styles.marker}
+        customMarker={<CustomMarker/>}
         />
+    )
+  }
+}
+
+class CustomMarker extends Component{
+  render(){
+    return (
+      <View style={styles.rectangleContainer}>
+      <View style={styles.rectangle}/>
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
     container: {
-      justifyContent:"center",alignItems:"center"
+      justifyContent:"center",
+      alignItems:"center",
+
     },
     centerText: {
       flex: 1,
@@ -92,8 +108,30 @@ const styles = StyleSheet.create({
       top: 30
   },
   barcode:{
-    width: 200,
-    height: 200,
+    height: 300,
+    backgroundColor:'red',
+
+    flex:1,
+    alignItems:'center',
+    backgroundColor:'transparent'
+  },
+  marker:{
+    borderTopColor:'red',
+    borderTopWidth:2,
+    backgroundColor: 'red'
+  },
+  rectangleContainer:{
+    flex:1,
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundColor:'transparent'
+  },
+  rectangle:{
+    height:250,
+    width: 250,
+    borderWidth:2,
+    borderColor: 'green',
+    backgroundColor:'transparent'
   }
   });
   

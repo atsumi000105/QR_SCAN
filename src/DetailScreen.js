@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import {Text,View,StyleSheet,Image} from "react-native";
+import {Text,View,StyleSheet,Image,YellowBox} from "react-native";
 import { Card, ListItem, Button,Icon } from 'react-native-elements'
 const {width, height} = require('Dimensions').get('window');
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
 
 export default class DetailScreen extends Component {

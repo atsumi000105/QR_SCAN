@@ -31,7 +31,17 @@ const Screen = createStackNavigator({
     }
   },
   Camera:{
-    screen: CameraScreen
+    screen: CameraScreen,
+    navigationOptions: {
+      headerTintColor: "#fff",
+      headerStyle: {
+        backgroundColor: '#00a8ff',
+        shadowOpacity: 0,
+        shadowRadius:0,
+        elevation: 0
+      },
+
+    }
   },
   Detail:{
     screen : DetailScreen,
@@ -39,7 +49,6 @@ const Screen = createStackNavigator({
       headerTintColor: "#fff",
       headerStyle: {
         backgroundColor: '#00a8ff',
-        color: '#fff',
         shadowOpacity: 0,
         shadowRadius:0,
         elevation: 0
