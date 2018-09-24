@@ -34,7 +34,18 @@ const Screen = createStackNavigator({
     screen: CameraScreen
   },
   Detail:{
-    screen : DetailScreen
+    screen : DetailScreen,
+    navigationOptions: {
+      headerTintColor: "#fff",
+      headerStyle: {
+        backgroundColor: '#00a8ff',
+        color: '#fff',
+        shadowOpacity: 0,
+        shadowRadius:0,
+        elevation: 0
+      },
+
+    }
   }
 })
 export default class App extends Component<Props> {

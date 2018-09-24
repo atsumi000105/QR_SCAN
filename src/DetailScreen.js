@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import {Text,View,StyleSheet} from "react-native";
+import {Text,View,StyleSheet,Image} from "react-native";
 import { Card, ListItem, Button,Icon } from 'react-native-elements'
+const {width, height} = require('Dimensions').get('window');
 
 
 export default class DetailScreen extends Component {
@@ -10,49 +11,74 @@ export default class DetailScreen extends Component {
 constructor(props) {
   super(props)
 
-  console.log("ok kak");
+
 
     const params = this.props.navigation.state.params;
-    const data = params.data;
-  this.state = {
-     data: data
-  }
+//     const data = params.data;
+//   this.state = {
+//      data: data
+//   }
 
-console.log(this.state.data);
+// console.log(this.state.data);
 }
 
 
   render() {
-      if(this.state.data.status_bayar==0){
+    //   if(this.state.data.status_bayar==0){
 
-        bayar = <Text style={styles.text}>Belum Bayar</Text>;
-      }
-      else{
-          bayar = <Text style={styles.text}>Lunas</Text>;
-      }
+    //     bayar = <Text style={styles.text}>Belum Bayar</Text>;
+    //   }
+    //   else{
+    //       bayar = <Text style={styles.text}>Lunas</Text>;
+    //   }
     return (
-        <View >
+        <View style={styles.withBackground}>
        
-<Card title="Info Tiket">
+<Card >
   <View>
-
-  <Text style={styles.text}>{"#"+this.state.data.id}</Text>
-  <Text style={styles.subText}>Nomor Transaksi</Text>
+<View style={{alignItems:'center'}}>
+<Image 
+source={{uri:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/220px-QR_code_for_mobile_English_Wikipedia.svg.png'}}
+style={{width: 100, height: 100}}
+/>
+</View>
+  <Text style={styles.text}>INVOICE</Text>
+  <Text style={styles.subText}>#123</Text>
 </View>
   <View>
 
-  <Text style={styles.text}>{this.state.data.harga_akhir}</Text>
-  <Text style={styles.subText}>Harga Total</Text>
+  <Text style={styles.text}>USER</Text>
+  <Text style={styles.subText}>budi santoso</Text>
 </View>
 
+
   <View>
-      {bayar}
-  <Text style={styles.subText}>Status</Text>
+
+<Text style={styles.text}>TOTAL</Text>
+<Text style={styles.subTextPrice}>Rp.20.000,000</Text>
 </View>
 
        
 
 
+</Card>
+<Card flexDirection='row'>
+  <View style={{flex: 6}}>
+    <Text style={{fontWeight: 'bold', marginBottom: 5}}>
+      Tanggal
+    </Text>
+    <Text style={{marginBottom: 5}}>
+      12 Januari 2019
+    </Text>
+  </View>
+  <View style={{flex: 6, flexDirection: 'column'}}>
+    <Text style={{fontWeight: 'bold', marginBottom: 5}}>
+      Event
+    </Text>
+    <Text style={{marginBottom: 5}}>
+      Lomba Lari 100KM
+    </Text>
+  </View>
 </Card>
         </View>
     )
@@ -60,6 +86,11 @@ console.log(this.state.data);
 }
 
 const styles = StyleSheet.create({
+    withBackground:{
+backgroundColor : "#00a8ff",
+height: "100%",
+width: "100%"
+    },
     icon:{
         flex: 1,
         flexDirection: 'row',
@@ -67,11 +98,24 @@ const styles = StyleSheet.create({
 
     },
     text: {
-        fontSize: 40,
-        textAlign: 'center'
+        fontSize: 15,
+        textAlign: 'center',
+        borderStyle: 'solid',
     },
     subText: {
         fontSize: 20,
-        textAlign: 'center'
+        color: '#333',
+        textAlign: 'center',
+        borderBottomWidth: 1,
+        marginBottom:20,
+        marginTop:5,
+        borderBottomColor: '#eee'
+    },
+    subTextPrice: {
+        fontSize: 20,
+        color: 'red',
+        textAlign: 'center',
+        marginBottom:20,
+        marginTop:5,
     }
 })

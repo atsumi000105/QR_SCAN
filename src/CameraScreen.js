@@ -9,57 +9,35 @@ export default class CameraScreen extends Component {
   state = {
     isConnected: true
   }  ;
-    componentDidMount(){
-      NetInfo.isConnected.addEventListener('connectionChange ',this.handleConnection);
-    }
-    componentWillMount(){
-      NetInfo.isConnected.addEventListener('connectionChange ',this.handleConnection);
-
-    }
-    handleConnection(isConnected){
-      if(isConnected){
-        this.setState({isConnected});
-      }
-      else{
-        this.setState({isConnected});
-
-
-      }
-    }
+   
     read(e){
         console.log(e);
         Alert.alert("ok");
-    }
-    offline() {
-      return(
-        
-    <View style={styles.offlineContainer}>
-    <Text style={styles.offlineText}>No Internet Connection</Text>
-</View>
-      )
     }
     onSuccess(e) {
 
 
       //aksi anda
       // console.log(e);
-      const qr = e.data;
-      fetch(url).then(res => res.json())
-      .then(res=>{
-        // console.log(res);
-        if(res.status=="ok"){
-          const data = res.data;
-          this.props.navigation.navigate('Detail',{
-            qr,
-            data
-          });
+      this.props.navigation.navigate('Detail');
+
+      // const qr = e.data;
+      // fetch(url).then(res => res.json())
+      // .then(res=>{
+      //   // console.log(res);
+      //   if(res.status=="ok"){
+      //     const data = res.data;
+      //     this.props.navigation.navigate('Detail',{
+      //       qr,
+      //       data
+      //     });
               
-        }
-        else{
-          Alert.alert("Tidak Ada Data");
-          this.scanner.reactivate();
-        }
-      });
+      //   }
+      //   else{
+      //     Alert.alert("Tidak Ada Data");
+      //     this.scanner.reactivate();
+      //   }
+      // });
       // this.props.navigation.navigate('Detail',{
       //   qr
       // });
@@ -70,11 +48,6 @@ export default class CameraScreen extends Component {
     
   render() {
     
-
-      if(!this.state.isConnected){
-        this.offline();
-      }
-      
     return (
       <QRCodeScanner        
       reactivate={true}
@@ -119,8 +92,8 @@ const styles = StyleSheet.create({
       top: 30
   },
   barcode:{
-    width: 150,
-    height: 150,
+    width: 200,
+    height: 200,
   }
   });
   

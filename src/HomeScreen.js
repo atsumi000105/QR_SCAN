@@ -26,7 +26,7 @@ export default class HomeScreen extends Component {
                         style={styles.btnScan}
                         onPress={()=>{this.props.navigation.navigate('Camera')}}
             >
-              <Text style={styles.txtButtonScan}>Scan Barcode</Text>
+              <Text style={styles.txtButtonScan}>SCAN BARCODE</Text>
             </TouchableOpacity>
         </View>
         </View>
